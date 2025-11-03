@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="card-header bg-light d-flex justify-content-between align-items-center">
+    <h4 class="mb-0"> 🎃👻Nossos Produtos Amaldiçoados👻🎃 </h4>
+    <span class="badge bg-primary">{{ produtosFiltrados.length }} produtos</span>
+  </div>
+  
+  <div class="card-body">
+    
+    <div class="row mb-4 g-3">
+      
+      <div class="col-md-5">
+        <div class="input-group">
+          <span class="input-group-text">🔍</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Buscar produtos..."
+            [(ngModel)]="filtroNome"
+          />
+        </div>
+      </div>
+      
+      
+      
+    </div>
+
+    
+  
+    
+    <div *ngIf="produtosFiltrados.length === 0" class="alert alert-warning text-center">
+      <i class="fas fa-search me-2"></i>
+      Nenhum produto encontrado com os filtros atuais.
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col" *ngFor="let produto of produtosFiltrados">
+        <app-produto-card
+          [produto]="produto"
+          (adicionarCarrinho)="adicionarCarrinho.emit(produto)"
+        ></app-produto-card>
+      </div>
+    </div>
+
+  </div>
+</div>

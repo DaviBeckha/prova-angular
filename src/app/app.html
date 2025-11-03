@@ -1,1 +1,38 @@
-<router-outlet />
+<div class="container-fluid">
+  <app-navbar 
+    [quantidadeCarrinho]="quantidadeCarrinho"
+    [totalCarrinho]="totalCarrinho">
+  </app-navbar>
+  
+  <div class="container mt-4">
+    <div class="row">
+      
+      <div class="col-12 d-md-none mb-3">
+        <app-carrinho 
+          [carrinho]="carrinho"
+          [total]="totalCarrinho"
+          (remover)="onRemoverDoCarrinho($event)"
+          
+          (finalizar)="onFinalizarCompra()">
+        </app-carrinho>
+      </div>
+      
+      <div class="col-lg-8 col-md-12">
+        <app-lista-produtos 
+          [produtos]="produtos"
+          (adicionarCarrinho)="onAdicionarAoCarrinho($event)">
+        </app-lista-produtos>
+      </div>
+      
+      <div class="col-lg-4 d-none d-md-block">
+        <app-carrinho 
+          [carrinho]="carrinho"
+          [total]="totalCarrinho"
+          (remover)="onRemoverDoCarrinho($event)"
+          (limparCarrinho)="onLimparCarrinho()"
+          (finalizar)="onFinalizarCompra()">
+        </app-carrinho>
+      </div>
+    </div>
+  </div>
+</div>

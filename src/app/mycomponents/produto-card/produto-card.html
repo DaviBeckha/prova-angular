@@ -1,0 +1,22 @@
+<div class="card h-100 shadow-sm">
+ 
+  <img [src]="produto.foto" class="card-img-top p-3" [alt]="produto.nome" style="height: 200px; object-fit: contain;">
+  
+  <div class="card-body d-flex flex-column">
+    
+    <h6 class="card-title">{{ produto.nome }}</h6>
+    <small class="text-muted mb-3"> R$ {{produto.preco}}</small>
+    
+    <small class="text-muted mb-3">
+      📦 {{ produto.quantidade }} em estoque
+    </small>
+
+    <button 
+      class="btn btn-primary w-100 mt-auto" 
+      (click)="adicionarCarrinho.emit()"
+      
+      [disabled]="produto.quantidade === 0">
+      {{ produto.quantidade > 0 ? '🛒 Adicionar ao Carrinho' : '❌ Sem Estoque' }}
+    </button>
+  </div>
+</div>
