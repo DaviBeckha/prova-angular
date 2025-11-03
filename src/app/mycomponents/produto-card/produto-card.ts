@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { Produto } from '../../shared/models/Produto';
 import { CommonModule } from '@angular/common';
 

@@ -30,6 +30,7 @@ export class AppComponent {
   ];
 
   carrinho: Produto[] = [];
+  router: any;
 
   
   onAdicionarAoCarrinho(produto: Produto) {
@@ -38,19 +39,20 @@ export class AppComponent {
     
     if (!itemExistente && produto.quantidade > 0) {
       this.carrinho.push({...produto});
+      produto.quantidade = produto.quantidade - 1;
     }
   }
 
   
   onRemoverDoCarrinho(produto: Produto) {
-    this.carrinho = this.carrinho.filter(p => p.id !== produto.id);
+    this.carrinho = this.carrinho.filter(p => p.id !== produto.id)
+    produto.quantidade === produto.quantidade 
   }
 
  
   onFinalizarCompra() {
     if (this.carrinho.length > 0) {
       alert(`Compra finalizada! Total: R$ ${this.totalCarrinho.toFixed(2)}`);
-      
       this.carrinho = [];
     }
   }
@@ -73,4 +75,9 @@ export class AppComponent {
   get quantidadeCarrinho(): number {
     return this.carrinho.length;
   }
+
+refreshComponent(){
+     this.router.navigate([this.router.url])
+  }
+
 }
