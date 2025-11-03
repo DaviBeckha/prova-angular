@@ -12,4 +12,12 @@ import { CommonModule } from '@angular/common';
 export class ProdutoCardComponent {
   @Input() produto!: Produto;
   @Output() adicionarCarrinho = new EventEmitter<void>();
+  
+  router: any;
+  
+
+
+  refreshComponent(){
+     this.router.navigate([this.router.url])
+  }
 }

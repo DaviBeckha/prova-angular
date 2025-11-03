@@ -36,7 +36,6 @@ export class AppComponent {
   onAdicionarAoCarrinho(produto: Produto) {
  
     const itemExistente = this.carrinho.find(p => p.id === produto.id);
-    
     if (!itemExistente && produto.quantidade > 0) {
       this.carrinho.push({...produto});
       produto.quantidade = produto.quantidade - 1;
@@ -46,7 +45,6 @@ export class AppComponent {
   
   onRemoverDoCarrinho(produto: Produto) {
     this.carrinho = this.carrinho.filter(p => p.id !== produto.id)
-    produto.quantidade === produto.quantidade 
   }
 
  
@@ -76,8 +74,6 @@ export class AppComponent {
     return this.carrinho.length;
   }
 
-refreshComponent(){
-     this.router.navigate([this.router.url])
-  }
+
 
 }
